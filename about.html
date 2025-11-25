@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - SoundMaster</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Arial', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    header {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      border-bottom: 2px solid #00ffff;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5em;
+      background: linear-gradient(90deg, #00eaff, #00ffff, #00d4ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 3px;
+      margin: 0;
+      text-shadow:
+        0 0 10px rgba(0,255,255,0.8),
+        0 0 20px rgba(0,255,255,0.6),
+        0 0 30px rgba(0,255,255,0.5),
+        0 0 40px rgba(0,255,255,0.4);
+      transition: transform 0.3s, text-shadow 0.3s;
+    }
+
+    header h1:hover {
+      transform: scale(1.08);
+      text-shadow:
+        0 0 15px rgba(0,255,255,1),
+        0 0 30px rgba(0,255,255,0.8),
+        0 0 45px rgba(0,255,255,0.7),
+        0 0 60px rgba(0,255,255,0.6);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ffff;
+    }
+
+    /* About Section */
+
+    .about-section {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .about-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .about-section h3 {
+      font-size: 1.8em;
+      color: #fff;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    .about-section h4 {
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .about-section p {
+      max-width: 900px;
+      margin: 0 auto 20px;
+      line-height: 1.8;
+      font-size: 1.2em;
+    }
+
+    /* Company Features Section */
+
+    .features {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      width: 250px;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .feature-card h4 {
+      color: #00ffff;
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      font-weight: bold;
+      
+    }
+
+    .feature-card p {
+      font-size: 1em;
+      line-height: 1.5;
+      color: #ccf0ff;
+    }
+
+    /* Company Branches */
+
+    .branches {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .branch-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px 30px;
+      border-radius: 12px;
+      width: 250px;
+      text-align: center;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .branch-card:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .branch-card h4 {
+      color: #00ffff;
+      margin-bottom: 5px;
+    }
+
+    .branch-card p {
+      color: #ccf0ff;
+      margin: 5px 0;
+    }
+
+    /* Group Member Positions */
+
+    .cofounders {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .cofounder-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      width: 200px;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .cofounder-card:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .cofounder-card h4 {
+      color: #00ffff;
+      margin-bottom: 5px;
+    }
+
+    .cofounder-card p {
+      color: #ccf0ff;
+      margin: 5px 0;
+    }
+
+    /* Contact Info. Section */
+
+    .contact-section {
+      margin-top: 40px;
+      background: rgba(255,255,255,0.1);
+      padding: 40px 20px;
+      border-radius: 12px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-section h3 {
+      color: #fff;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    .contact-item {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #ccf0ff;
+    }
+    .social-section {
+  margin-top: 30px;
+}
+
+.social-section h3 {
+  color: #fff;
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  color: #00ffff;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.social-link:hover {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.1);
+}
+
+
+footer {
+      background: #1a1a1a;
+      color: #00ffff;
+      text-align: center;
+      padding: 20px 0;
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🎧SoundMaster</h1>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="home.html#shop">Shop</a>
+      <a href="about.html">About Us</a>
+      <a href="checkout.html">Checkout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-section">
+
+      <h2>About SoundMaster</h2>
+      <p>SoundMaster is your premier destination for premium audio accessories. Founded by passionate audiophiles, we aim to bring the finest sound experience to music lovers, gamers, and professionals.</p>
+
+      <h3>Our Mission</h3>
+      <p>To provide crystal-clear audio, cutting-edge technology, and top-quality products to every listener.</p>
+
+      <!-- Features -->
+      <div class="features">
+        <div class="feature-card">
+          <h4>High-Quality Gear</h4>
+          <p>Only top-rated headphones, speakers, and accessories that meet our strict quality standards.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Expert Guidance</h4>
+          <p>Our team helps you choose the perfect audio setup, whether you are a beginner or a pro.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Fast & Reliable</h4>
+          <p>Quick delivery, hassle-free returns, and customer support you can trust.</p>
+        </div>
+      </div>
+
+      <!-- Company Branches -->
+      <h3>Our Branches & Timings</h3>
+      <div class="branches">
+        <div class="branch-card">
+          <h4>Karachi</h4>
+          <p>Main Branch - Clifton Block 5</p>
+          <p><strong>Timings:</strong> 8 AM – 10 PM</p>
+        </div>
+        <div class="branch-card">
+          <h4>Lahore</h4>
+          <p>DHA Phase 6</p>
+          <p><strong>Timings:</strong> 8 AM – 10 PM</p>
+        </div>
+        <div class="branch-card">
+          <h4>Islamabad</h4>
+          <p>F-7 Markaz</p>
+          <p><strong>Timings:</strong> 8 AM – 10 PM</p>
+        </div>
+      </div>
+
+      <!-- Group Member Positions -->
+      <h3>Meet Our Co-Founders</h3>
+      <div class="cofounders">
+        <div class="cofounder-card">
+          <h4>Abdul Qadir</h4>
+          <p>Head of Operations & Audio Specialist</p>
+        </div>
+        <div class="cofounder-card">
+          <h4>Umar Hussain</h4>
+          <p>Marketing Director & Product Curator</p>
+        </div>
+        <div class="cofounder-card">
+          <h4>Roshaan Agha</h4>
+          <p>Technology Expert & Customer Experience Lead</p>
+        </div>
+      </div>
+
+      <!-- Contact Info. -->
+      <div class="contact-section">
+        <h3>Contact Information</h3>
+        <p class="contact-item"><strong>Email:</strong> support@soundmaster.com</p>
+        <p class="contact-item"><strong>Phone:</strong> +92 300 1234567</p>
+        <p class="contact-item"><strong>Customer Support Hours:</strong> 9 AM – 11 PM</p>
+        <p class="contact-item"><strong>Response Time:</strong> Within 24 hours</p>
+      </div>
+      <div class="social-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#" class="social-link">Instagram</a>
+        <a href="#" class="social-link">Facebook</a>
+        <a href="#" class="social-link">Twitter</a>
+        <a href="#" class="social-link">WhatsApp</a>
+      </div>
+    </div>
+
+
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 SoundMaster. All rights reserved.
+  </footer>
+</body>
+</html>

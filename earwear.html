@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoundMaster - Earwear</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #0f2027;
+      color: #ccf0ff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      scroll-behavior: smooth; /* Smooth scrolling */
+    }
+
+    header {
+      background: #1a1a1a;
+      color: #00ffff;
+      padding: 20px 0;
+      text-align: center;
+      position: sticky; /* Sticky header */
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #00ffff;
+    }
+
+    #headphones {
+       padding-top: 0px; 
+    }
+
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3em;
+      background: linear-gradient(90deg, #00eaff, #00ffff, #00d4ff);
+      background-clip: text;
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0,255,255,0.8);
+      margin: 0;
+      transition: transform 0.3s, text-shadow 0.3s;
+    }
+
+    header h1:hover {
+      transform: scale(1.05);
+      text-shadow: 0 0 15px rgba(0,255,255,1);
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00eaff;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .earwear-section {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+      padding-top: 120px; 
+    }
+    .earwear-section + .earwear-section {
+      margin-top: 60px; /* Adds space between consecutive sections */
+    } 
+
+    .earwear-section h2 {
+      font-size: 2.5em;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px #000;
+    }
+
+    .earwear-section p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #ccf0ff;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      justify-items: stretch;
+    }
+
+    .product-grid div {
+      background: rgba(0, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Pushes button to bottom */
+      height: 100%; 
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .product-grid div:hover {
+      transform: scale(1.05);
+      background: rgba(0, 255, 255, 0.15);
+    }
+
+    .product-grid h3 {
+      min-height: 3em;
+      color: #fff;
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+
+    .product-grid p {
+      font-size: 1em;
+      line-height: 1.5;
+      color: #ccf0ff;
+      min-height: 3em; /* Adjust depending on max lines of name */
+      margin-bottom: 10px;
+    }
+
+    .product-grid img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background: #00ffff;
+      color: #1a1a1a;
+      font-weight: bold;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background: #00eaff;
+      transform: scale(1.05);
+    }
+
+    .cart {
+      margin-top: 40px;
+      background: rgba(0,255,255,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cart h2 {
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    #cart-list li {
+      color: #ccf0ff;
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .total-box {
+      margin-top: 15px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    footer {
+      background: #1a1a1a;
+      color: #00ffff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+/* Page wrapper to align main content and cart */
+.page-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+/* Main content takes remaining space */
+.main-content {
+  flex: 1;
+  min-width: 900px;
+}
+
+/* Cart Styles */
+.cart {
+  width: 320px;
+  background: rgba(0,255,255,0.08);
+  padding: 20px;
+  border-radius: 12px;
+  font-family: Arial, sans-serif;
+  position: sticky;
+  top: 160px;       
+  align-self: flex-start;
+  margin-left: auto;
+}
+
+.cart h2 {
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  margin-top: 0;
+}
+
+#cart-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+#cart-list li button {
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 0.8em;
+  transition: 0.2s;
+}
+
+#cart-list li button:hover {
+  background: #ff1a1a;
+}
+
+.total-box {
+  margin-top: 12px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#checkout-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 0;
+  background: #00ffff;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#checkout-btn:hover {
+  background: #00eaff;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎧SoundMaster - Earwear</h1>
+    <nav>
+      <!-- Use anchors to scroll to sections -->
+      <a href="home.html">Home</a>
+      <a href="home.html#shop">Shop</a>
+      <a href="#headphones">Headphones</a>
+      <a href="#earphones">EarPhones</a>
+      <a href="#earbuds">Earbuds</a>
+    </nav>
+  </header>
+
+ 
+  <div class="page-wrapper">
+  <main>
+    <!-- Headphones Section -->
+    <section class="earwear-section" id="headphones">
+      <h2>Headphones Collection</h2>
+      <p>Explore our premium over-ear headphones with superior sound quality.</p>
+      <div class="product-grid">
+
+        <div>
+          <h3>Beyerdynamic DT 1990 Pro</h3>
+          <img src="images/Earwear/beyerdynamic.jfif" alt="Beyerdynamic DT 1990 Pro">
+          <p class="description">Openback studio headphones with Tesla drivers and high-resolution audio.</p>
+          <p><strong>Price: Rs. 2,75,000</strong></p>
+           <button>Add to Cart</button>
+        </div>
+
+        <div>
+          <h3>Bose QuietComfort 45</h3>
+          <img src="images/Earwear/bose.jpg" alt="Bose QC45">
+          <p class="description">Comfortable over-ear headphones with premium sound.</p>
+          <p><strong>Price: Rs. 50,000</strong></p>
+          <button>Add to Cart</button>
+        </div>
+        
+        <div>
+          <h3>Sennheiser Momentum 4 Wireless</h3>
+          <img src="images/Earwear/sennheiser.jfif" alt="Sennheiser Momentum 4 Wireless">
+          <p class="description">Balanced audiophile sound, adaptive ANC, and 60h battery.</p>
+          <p><strong>Price: Rs 75,000</strong></p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div>
+          <h3>Sony WH-1000XM5</h3>
+          <img src="images/Earwear/sony.jfif" alt="Sony WH-1000XM5">
+          <p class="description">Industry-leading noise cancellation over-ear headphones.</p>
+          <p><strong>Price: Rs. 55,000</strong></p>
+          <button>Add to Cart</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EarPhones Section -->
+    <section class="earwear-section" id="earphones">
+      <h2>EarPhones Collection</h2>
+      <p>Wireless in-ear headphones with active noise cancellation and smart features.</p>
+      <div class="product-grid">
+        <div>
+          <h3>Sony MDR-EX155AP</h3>
+          <img src="images/Earwear/MDR.jfif" alt="Sony MDR-EX155AP">
+          <p>In-ear wired earphones with clear sound and in-line microphone.</p>
+          <p><strong>Price: Rs. 3,500</strong></p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div>
+          <h3>JBL C100TWS</h3>
+          <img src="images/Earwear/JBl2.jfif" alt="JBL C100TWS">
+          <p>True wireless earbuds with lightweight design and punchy bass.</p>
+          <p><strong>Price: Rs. 5,500</strong></p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div>
+          <h3>Beats urBeats3</h3>
+          <img src="images/Earwear/beats2.jfif" alt="Beats urBeats3">
+          <p>Premium in-ear earphones with dynamic sound and tangle-free cable.</p>
+          <p><strong>Price: Rs. 7,500</strong></p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div>
+          <h3>Sennheiser CX 350BT</h3>
+          <img src="images/Earwear/sennheiser2.jfif" alt="Sennheiser CX 350BT">
+          <p>Wireless in-ear headphones with balanced sound and long battery life.</p>
+          <p><strong>Price: Rs. 12,000</strong></p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Earbuds Section -->
+    <section class="earwear-section" id="earbuds">
+      <h2>Earbuds Collection</h2>
+      <p>True wireless earbuds designed for portability and active lifestyle.</p>
+      <div class="product-grid">
+        <div>
+          <h3>Apple AirPods Pro 2</h3>
+          <img src="images/Earwear/airpods.jfif" alt="AirPods Pro 2">
+          <p>Active Noise Cancellation, Transparency mode, and immersive sound.</p>
+          <p><strong>Price: Rs. 35,000</strong></p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div>
+          <h3>Samsung Galaxy Buds 2</h3>
+          <img src="images/Earwear/sbuds.jfif" alt="Samsung Galaxy Buds 2">
+          <p>Lightweight earbuds with active noise cancellation and rich sound quality.</p>
+          <p><strong>Price: Rs. 18,000</strong></p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div>
+          <h3>JBL Tune 230NC</h3>
+          <img src="images/Earwear/jbl.jfif" alt="JBL Tune 230NC">
+          <p>True wireless earbuds with active noise cancelling and bass boost.</p>
+          <p><strong>Price: Rs. 15,000</strong></p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div>
+          <h3>Beats Fit Pro</h3>
+          <img src="images/Earwear/beats.jfif" alt="Beats Fit Pro">
+          <p>Sporty in-ear earbuds with secure fit and high-quality sound.</p>
+          <p><strong>Price: Rs. 28,000</strong></p>
+          <button>Add to Cart</button>
+        </div>
+
+
+      </div>
+    </section>
+  </main>
+  <div class="cart">
+    <h2>Your Cart</h2>
+    <ul id="cart-list"></ul>
+    <div class="total-box">Total: Rs. <span id="total">0</span></div>
+    <button id="checkout-btn">Checkout</button>
+   </div>
+  </div>  
+  <footer>
+    &copy; 2025 SoundMaster. All rights reserved.
+  </footer>
+
+  <script src="testcart.js"></script>
+</body>
+</html>

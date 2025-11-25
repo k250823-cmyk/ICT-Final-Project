@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SoundMaster - Home</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background: #0f2027;
+  color: #fff;
+}
+
+header {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 2px solid #00ffff;
+}
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5em;
+  background: linear-gradient(90deg, #00eaff, #00ffff, #00d4ff);
+  background-clip: text; 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 3px;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(0,255,255,0.6);
+  transition: 0.3s;
+}
+
+header h1:hover {
+  transform: scale(1.08);
+  text-shadow: 0 0 30px rgba(0,255,255,1);
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover { color: #00eaff; }
+
+main { flex: 1; }
+
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: url('banner.jpg') center/cover no-repeat;
+  background-color: rgba(0,0,0,0.5);
+  background-blend-mode: multiply;
+}
+
+.hero h2 {
+  font-size: 3em;
+  color: #fff;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 20px auto;
+  font-size: 1.5em;
+  line-height: 1.6;
+  color: #ccf0ff;
+}
+
+.category-card h4:first-child {
+  font-size: 4rem;             
+  display: inline-block;
+  color: #00ffff;             
+  text-shadow: 
+      0 0 10px #00ffff,
+      0 0 20px #00ffff,
+      0 0 40px #00ffff;        
+  margin-bottom: 10px;
+  transition: 0.3s ease;
+}
+
+/* Hover effect like header */
+.category-card h4:first-child:hover {
+  transform: scale(1.15);
+  text-shadow:
+      0 0 15px #00eaff,
+      0 0 25px #00eaff,
+      0 0 50px #00eaff;
+}
+
+
+.categories, .featured, .reviews {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.categories h3, .featured h3, .reviews h3 {
+  font-size: 2.5em;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.category-container, .featured-container, .reviews-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.category-card, .featured-card, .review-card {
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: 12px;
+  width: 280px;
+  text-align: center;
+  transition: 0.3s;
+  color: #ccf0ff;
+}
+
+.category-card:hover, .featured-card:hover, .review-card:hover {
+  transform: scale(1.06);
+  background: rgba(255,255,255,0.2);
+}
+
+.category-card h4, .featured-card h4, .review-card h4 {
+  color: #fff;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.category-card p, .featured-card p, .review-card p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+.category-card a, .featured-card a {
+  display: inline-block;
+  background: #00ffff;
+  color: #000;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.category-card a:hover, .featured-card a:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+.featured-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.review-card p {
+  font-style: italic;
+}
+
+.review-card span {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #00ffff;
+}
+
+footer {
+  background: #1a1a1a;
+  color: #00ffff;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 30px;
+}
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🎧SoundMaster</h1>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="about.html">About Us</a>
+      <a href="checkout.html">Checkout</a>
+    </nav>
+  </header>
+
+  <main>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h2>Premium Audio. Unmatched Quality.</h2>
+  <p>Explore our premium audio collection featuring top-quality headphones, speakers, and accessories designed for audiophiles and professionals.</p>
+</section>
+
+<!-- Featured Products -->
+<section class="featured">
+  <h3>Featured Products</h3>
+  <div class="featured-container">
+    <div class="featured-card">
+      <img src="images/Earwear/airpods.jfif" alt="Apple AirPods Pro 2">
+      <h4>Apple AirPods Pro 2</h4>
+      <p>Active Noise Cancellation, Transparency mode, and immersive sound.</p>
+      <a href="earwear.html">Shop Now</a>
+    </div>
+    <div class="featured-card">
+      <img src="images/AudioDevices/Ultimate.jfif" alt="Ultimate Ears Hyperboom">
+      <h4>Ultimate Ears Hyperboom</h4>
+      <p>Massive sound for indoor & outdoor events.</p>
+      <a href="audio_devices.html">Shop Now</a>
+    </div>
+    <div class="featured-card">
+      <img src="images/Accessories/WirelessPad.jfif" alt="Wireless Charging Pad">
+      <h4>Wireless Charging Pad</h4>
+      <p>Convenient charging for your devices with sleek design.</p>
+      <a href="accessories.html">Shop Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Categories Section -->
+<section class="categories" id="shop">
+  <h3>Explore Categories</h3>
+  <div class="category-container">
+    <div class="category-card">
+      <h4>🎧</h4>
+      <h4>Ear Wear</h4>
+      <p>Premium headphones & earbuds for music lovers and gamers.</p>
+      <a href="earwear.html">Browse Ear Wear</a>
+    </div>
+    <div class="category-card">
+      <h4>📼</h4>
+      <h4>Audio Devices</h4>
+      <p>High-performance speakers for home, car, and studio.</p>
+      <a href="audio_devices.html">Browse Audio Devices</a>
+    </div>
+    <div class="category-card">
+      <h4>📲</h4>
+      <h4>Accessories</h4>
+      <p>Audio cables, stands, cases, and more.</p>
+      <a href="accessories.html">Browse Accessories</a>
+    </div>
+  </div>
+</section>
+
+<!-- Customer Reviews -->
+<section class="reviews">
+  <h3>What Our Customers Say</h3>
+  <div class="reviews-container">
+    <div class="review-card">
+      <p>"Absolutely love the sound quality of my new headphones!"</p>
+      <span>- Sarah M.</span>
+    </div>
+    <div class="review-card">
+      <p>"The speakers exceeded my expectations. Highly recommend SoundMaster!"</p>
+      <span>- Ahmed R.</span>
+    </div>
+    <div class="review-card">
+      <p>"Fast delivery and great customer support. Very satisfied."</p>
+      <span>- Maria K.</span>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+    &copy; 2025 SoundMaster. All rights reserved.
+  </footer>
+</body>
+</html>

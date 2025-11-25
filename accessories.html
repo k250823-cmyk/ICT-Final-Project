@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoundMaster - Accessories</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #0f2027;
+      color: #ccf0ff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #1a1a1a;
+      color: #00ffff;
+      padding: 20px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #00ffff;
+    }
+
+    #cases{
+       padding-top: 0px;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3em;
+      background: linear-gradient(90deg, #00eaff, #00ffff, #00d4ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0,255,255,0.8);
+      margin: 0;
+      transition: transform 0.3s, text-shadow 0.3s;
+    }
+
+    header h1:hover {
+      transform: scale(1.05);
+      text-shadow: 0 0 15px rgba(0,255,255,1);
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00eaff;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .accessories-section {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    .accessories-section h2 {
+      font-size: 2.5em;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px #000;
+    }
+
+    .accessories-section + .accessories-section {
+      margin-top: 120px; /* Spacing only between consecutive sections */
+    }
+
+
+    .accessories-section p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #ccf0ff;
+    }
+
+    .product-grid {
+      display: grid;
+
+      /* Three Items Per Row */
+      grid-template-columns: repeat(3, 1fr);
+
+      row-gap: 70px;
+      column-gap: 25px;
+      justify-items: stretch;
+    }
+
+    .product-grid div {
+      background: rgba(0, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .product-grid div:hover {
+      transform: scale(1.05);
+      background: rgba(0, 255, 255, 0.15);
+    }
+
+    .product-grid h3 {
+      min-height: 3em;
+      color: #fff;
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+
+    .product-grid img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background: #00ffff;
+      color: #1a1a1a;
+      font-weight: bold;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background: #00eaff;
+      transform: scale(1.05);
+    }
+
+    .cart {
+      margin-top: 40px;
+      background: rgba(0,255,255,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cart h2 {
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    #cart-list li {
+      color: #ccf0ff;
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .total-box {
+      margin-top: 15px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .page-wrapper {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      max-width: 1400px;
+      margin: auto;
+      padding: 20px 0;
+    }
+
+    .main-content {
+      flex: 1;
+      min-width: 900px;
+    }
+
+    .cart {
+      width: 320px;
+      background: rgba(0,255,255,0.08);
+      padding: 20px;
+      border-radius: 12px;
+      position: sticky;
+      top: 160px;
+      align-self: flex-start;
+      margin-left: auto;
+    }
+
+    .cart h2 {
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    #cart-list li {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+    }
+
+    #cart-list li button {
+      background: #ff4d4d;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 2px 6px;
+      font-size: 0.8em;
+      transition: 0.2s;
+    }
+
+    #cart-list li button:hover {
+      background: #ff1a1a;
+    }
+
+    .total-box {
+      margin-top: 12px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    #checkout-btn {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px 0;
+      background: #00ffff;
+      color: #1a1a1a;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #checkout-btn:hover {
+      background: #00eaff;
+    }
+
+    footer {
+      background: #1a1a1a;
+      color: #00ffff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🎧SoundMaster - Accessories</h1>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="home.html#shop">Shop</a>
+      <a href="#cases">Phone Cases</a>
+      <a href="#chargers">Cables & Chargers</a>
+      <a href="#tech">Tech Accessories</a>
+    </nav>
+  </header>
+
+  <div class="page-wrapper">
+    <main class="main-content">
+
+      <!-- Phone Cases Section -->
+      <section class="accessories-section" id="cases">
+        <h2>Phone Cases</h2>
+        <p>Premium protective phone cases for all major smartphone brands.</p>
+
+        <div class="product-grid">
+          <div>
+            <h3>Spigen Rugged Armor</h3>
+            <img src="images/Accessories/SpigenRuggedArmor.jfif" alt="">
+            <p><strong>Price: Rs. 3,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Apple Silicone Case</h3>
+            <img src="images/Accessories/AppleSiliconCase.jfif" alt="">
+            <p><strong>Price: Rs. 6,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Samsung Protective Case</h3>
+            <img src="images/Accessories/SamsungProtectiveCase.jfif" alt="">
+            <p><strong>Price: Rs. 4,500</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Transparent Ultra Slim Case</h3>
+            <img src="images/Accessories/TransparentUltraSlim.jfif" alt="">
+            <p><strong>Price: Rs. 1,800</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Leather Flip Wallet Case</h3>
+            <img src="images/Accessories/LeatherFlipWallet.jfif" alt="">
+            <p><strong>Price: Rs. 2,800</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Gaming Grip Case</h3>
+            <img src="images/Accessories/GamingGripCase.jfif" alt="">
+            <p><strong>Price: Rs. 2,200</strong></p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cables & Chargers Section -->
+      <section class="accessories-section" id="chargers">
+        <h2>Cables & Chargers</h2>
+        <p>Fast-charging cables and adapters for all your devices.</p>
+
+        <div class="product-grid">
+          <div>
+            <h3>Apple USB-C Charger 20W</h3>
+            <img src="images/Accessories/Apple20W.jfif" alt="">
+            <p><strong>Price: Rs. 4,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Anker Powerline Cable</h3>
+            <img src="images/Accessories/AnkerPowerline.jfif" alt="">
+            <p><strong>Price: Rs. 2,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Samsung Super Fast Charger</h3>
+            <img src="images/Accessories/SamsungSuperfastCharger.jfif" alt="">
+            <p><strong>Price: Rs. 4,200</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Baseus 65W GaN Charger</h3>
+            <img src="images/Accessories/Baseus65Watt.jfif" alt="">
+            <p><strong>Price: Rs. 5,500</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Magnetic Fast-Charge Cable</h3>
+            <img src="images/Accessories/MagneticFastCharge.jfif" alt="">
+            <p><strong>Price: Rs. 1,400</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Wireless Charging Dock</h3>
+            <img src="images/Accessories/WirelessDock.jfif" alt="">
+            <p><strong>Price: Rs. 6,800</strong></p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tech Accessories Section -->
+      <section class="accessories-section" id="tech">
+        <h2>Tech Accessories</h2>
+        <p>Useful gadgets and enhancements for all your tech needs.</p>
+
+        <div class="product-grid">
+          <div>
+            <h3>Logitech MX Master Mouse</h3>
+            <img src="images/Accessories/LogitechMouse.jfif" alt="">
+            <p><strong>Price: Rs. 25,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Baseus Car Holder</h3>
+            <img src="images/Accessories/BaseusCarHolder.jfif" alt="">
+            <p><strong>Price: Rs. 3,500</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Wireless Charging Pad</h3>
+            <img src="images/Accessories/WirelessPad.jfif" alt="">
+            <p><strong>Price: Rs. 5,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>RGB Laptop Cooling Pad</h3>
+            <img src="images/Accessories/LaptopCoolingPad.jfif" alt="">
+            <p><strong>Price: Rs. 4,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Portable Mini Keyboard</h3>
+            <img src="images/Accessories/PortableKeyboard.jfif" alt="">
+            <p><strong>Price: Rs. 3,200</strong></p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div>
+            <h3>Bluetooth Tracker Tag</h3>
+            <img src="images/Accessories/BluetoothTag.jfif" alt="">
+            <p><strong>Price: Rs. 1,900</strong></p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <div class="cart">
+      <h2>Your Cart</h2>
+      <ul id="cart-list"></ul>
+      <div class="total-box">Total: Rs. <span id="total">0</span></div>
+      <button id="checkout-btn">Checkout</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 SoundMaster. All rights reserved.
+  </footer>
+
+  <script src="testcart.js"></script>
+</body>
+</html>

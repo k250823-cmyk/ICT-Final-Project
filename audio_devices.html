@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoundMaster - Audio Devices</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #0f2027;
+      color: #ccf0ff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #1a1a1a;
+      color: #00ffff;
+      padding: 20px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #00ffff;
+    }
+
+    #speakers {
+       padding-top: 0px; 
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3em;
+      background: linear-gradient(90deg, #00eaff, #00ffff, #00d4ff);
+      background-clip: text; 
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0,255,255,0.8);
+      margin: 0;
+      transition: transform 0.3s, text-shadow 0.3s;
+    }
+
+    header h1:hover {
+      transform: scale(1.05);
+      text-shadow: 0 0 15px rgba(0,255,255,1);
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00eaff;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .audiodevices-section {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+      padding-top: 120px;
+      margin-bottom: 60px;
+    }
+    .audiodevices-section + .audiodevices-section {
+      margin-top: 60px; /* Vertical space between consecutive sections */
+    }
+
+    .audiodevices-section h2 {
+      font-size: 2.5em;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px #000;
+    }
+
+    .audiodevices-section p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #ccf0ff;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 25px;
+      row-gap: 50px;  
+      justify-items: stretch;
+    }
+
+    .product-grid div {
+      background: rgba(0, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .product-grid div:hover {
+      transform: scale(1.05);
+      background: rgba(0, 255, 255, 0.15);
+    }
+
+    .product-grid h3 {
+      min-height: 45px;
+      color: #fff;
+      font-size: 1.4em;
+      margin: 8px 0;
+    }
+
+    .product-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 6px 0 10px 0;
+    }
+
+    .product-grid p.description {
+      min-height: 55px;
+      font-size: 1em;
+      line-height: 1.5;
+      color: #ccf0ff;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background: #00ffff;
+      color: #1a1a1a;
+      font-weight: bold;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background: #00eaff;
+      transform: scale(1.05);
+    }
+
+    .cart {
+      margin-top: 40px;
+      background: rgba(0,255,255,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cart h2 {
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    #cart-list li {
+      color: #ccf0ff;
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .total-box {
+      margin-top: 15px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    footer {
+      background: #1a1a1a;
+      color: #00ffff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: auto;
+    }
+
+   /* Page wrapper to align main content and cart */
+.page-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+/* Main content takes remaining space */
+.main-content {
+  flex: 1;
+  min-width: 900px;
+}
+
+/* Cart Styles */
+.cart {
+  width: 320px;
+  background: rgba(0,255,255,0.08);
+  padding: 20px;
+  border-radius: 12px;
+  font-family: Arial, sans-serif;
+  position: sticky;
+  top: 160px;       
+  align-self: flex-start;
+  margin-left: auto;
+}
+
+.cart h2 {
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  margin-top: 0;
+}
+
+#cart-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+#cart-list li button {
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 0.8em;
+  transition: 0.2s;
+}
+
+#cart-list li button:hover {
+  background: #ff1a1a;
+}
+
+.total-box {
+  margin-top: 12px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#checkout-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 0;
+  background: #00ffff;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#checkout-btn:hover {
+  background: #00eaff;
+}
+</style>
+</head>
+
+<body>
+  <header>
+    <h1>🎧SoundMaster - Audio Devices</h1>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="home.html#shop">Shop</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#microphones">Microphones</a>
+    </nav>
+  </header>
+
+  <div class="page-wrapper">
+    <main class="main-content">
+
+      <!-- Speakers Section -->
+      <section class="audiodevices-section" id="speakers">
+        <h2>Speakers Collection</h2>
+        <p>Premium speakers for home, studio, and professional audio experiences.</p>
+
+        <div class="product-grid">
+          <div>
+            <h3>JBL PartyBox 310</h3>
+            <img src="images/AudioDevices/JBL.jfif" alt="JBL PartyBox 310">
+            <p class="description">Portable party speaker with powerful bass and lights.</p>
+            <p><strong>Price: Rs. 45,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Bose SoundLink Revolve+</h3>
+            <img src="images/AudioDevices/Bose.jfif" alt="Bose SoundLink Revolve+">
+            <p class="description">360-degree immersive sound.</p>
+            <p><strong>Price: Rs. 55,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Sony SRS-XB43</h3>
+            <img src="images/AudioDevices/sony.jfif" alt="Sony SRS-XB43">
+            <p class="description">Extra Bass portable Bluetooth speaker.</p>
+            <p><strong>Price: Rs. 50,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Marshall Stanmore II</h3>
+            <img src="images/AudioDevices/stanmore.jfif" alt="Marshall Stanmore II">
+            <p class="description">Classic design with hi-fi sound.</p>
+            <p><strong>Price: Rs. 70,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>LG XBOOM 360</h3>
+            <img src="images/AudioDevices/LG.jfif" alt="LG XBOOM 360">
+            <p class="description">360-degree sound with lighting effects.</p>
+            <p><strong>Price: Rs. 60,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Ultimate Ears Hyperboom</h3>
+            <img src="images/AudioDevices/Ultimate.jfif" alt="Ultimate Ears Hyperboom">
+            <p class="description">Massive sound for indoor & outdoor events.</p>
+            <p><strong>Price: Rs. 85,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Klipsch The Fives</h3>
+            <img src="images/AudioDevices/Klipsch.jfif" alt="Klipsch The Fives">
+            <p class="description">High-fidelity bookshelf speakers.</p>
+            <p><strong>Price: Rs. 90,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Edifier R1280DB</h3>
+            <img src="images/AudioDevices/Edifier.jfif" alt="Edifier R1280DB">
+            <p class="description">Active bookshelf speakers with Bluetooth.</p>
+            <p><strong>Price: Rs. 20,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Microphones Section -->
+      <section class="audiodevices-section" id="microphones">
+        <h2>Microphones Collection</h2>
+        <p>Professional microphones for recording, streaming, and stage performances.</p>
+
+        <div class="product-grid">
+          <div>
+            <h3>Shure SM7B</h3>
+            <img src="images/AudioDevices/Shure MV7.jfif" alt="Shure SM7B">
+            <p class="description">Dynamic mic ideal for studio & podcasting.</p>
+            <p><strong>Price: Rs. 65,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Blue Yeti X</h3>
+            <img src="images/AudioDevices/Blue Yeti X.jfif" alt="Blue Yeti X">
+            <p class="description">USB condenser mic with excellent clarity.</p>
+            <p><strong>Price: Rs. 40,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Rode NT1-A</h3>
+            <img src="images/AudioDevices/Rode NT-USB Mini.jfif" alt="Rode NT1-A">
+            <p class="description">Studio condenser mic with ultra-low noise.</p>
+            <p><strong>Price: Rs. 55,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Audio-Technica AT2020</h3>
+            <img src="images/AudioDevices/Audio-Technica AT2020.jfif" alt="Audio-Technica AT2020">
+            <p class="description">Condenser mic perfect for home studios.</p>
+            <p><strong>Price: Rs. 30,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Samson Meteor Mic</h3>
+            <img src="images/AudioDevices/Samson Meteor Mic.jfif" alt="Samson Meteor Mic">
+            <p class="description">Compact USB mic ideal for streaming.</p>
+            <p><strong>Price: Rs. 20,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>AKG C214</h3>
+            <img src="images/AudioDevices/AKG C214.jfif" alt="AKG C214">
+            <p class="description">Large-diaphragm condenser mic.</p>
+            <p><strong>Price: Rs. 70,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Rode NT-USB Mini</h3>
+            <img src="images/AudioDevices/Rode NT-USB Mini.jfif" alt="Rode NT-USB Mini">
+            <p class="description">USB mic with studio-quality sound.</p>
+            <p><strong>Price: Rs. 25,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+          <div>
+            <h3>Shure MV7</h3>
+            <img src="images/AudioDevices/Shure MV7.jfif" alt="Shure MV7">
+            <p class="description">USB/XLR mic for podcasting & streaming.</p>
+            <p><strong>Price: Rs. 50,000</strong></p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Cart Section -->
+    <div class="cart">
+      <h2>Your Cart</h2>
+      <ul id="cart-list"></ul>
+      <div class="total-box">Total: Rs. <span id="total">0</span></div>
+      <button id="checkout-btn">Checkout</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 SoundMaster. All rights reserved.
+  </footer>
+
+  <script src="testcart.js"></script>
+</body>
+</html>
